@@ -21,7 +21,7 @@ const role = async (req: Request, res: Response) => {
   if (!authorization) return res.status(401).json({ message: 'Token not found' });
   const data = authorization.split(' ');
   const token = data[1];
-  if (!token) return res.status(401).json({ message: 'Token not found' });
+  if (!token) return res.status(401).json({ message: 'Token must be a valid token' });
   try {
     const deco = jwtUtils.decodeToken(token);
     const result = await loginService.role(deco);

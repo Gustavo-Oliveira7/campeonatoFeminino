@@ -5,5 +5,6 @@ import { emailValidation, passwordValidation } from '../middlewares/loginValidat
 const loginRouter = Router();
 
 loginRouter.post('/', emailValidation, passwordValidation, loginController.login);
+loginRouter.get('/role', loginController.role);
 
 export default loginRouter;

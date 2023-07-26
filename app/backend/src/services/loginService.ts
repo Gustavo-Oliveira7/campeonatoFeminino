@@ -1,4 +1,5 @@
 import * as bcrypt from 'bcryptjs';
+import { JwtPayload } from 'jsonwebtoken';
 import UsersModel from '../database/models/UsersModel';
 
 const login = async (email: string, password: string) => {
@@ -12,4 +13,9 @@ const login = async (email: string, password: string) => {
   return [result];
 };
 
-export default { login };
+const role = async (email: JwtPayload) => {
+  const find = await UsersModel.findOne({ where: { email } });
+  return find?.dataValues.role;
+};
+
+export default { login, role };

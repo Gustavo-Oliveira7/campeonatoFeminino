@@ -22,9 +22,7 @@ const getAll = async () => {
 // eslint-disable-next-line max-lines-per-function
 const getByProgress = async (progress: boolean) => {
   const result = await MatchesModel.findAll({
-    attributes: [
-      'id', 'homeTeamId', 'homeTeamGoals', 'awayTeamId', 'awayTeamGoals', 'in_progress',
-    ],
+    where: { inProgress: progress },
     include: [
       { model: TeamsModel,
         as: 'homeTeam',
@@ -36,8 +34,8 @@ const getByProgress = async (progress: boolean) => {
         attributes: ['teamName'],
       },
     ],
-    where: { inProgress: progress },
   });
+
   return result;
 };
 

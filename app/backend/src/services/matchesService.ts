@@ -19,7 +19,6 @@ const getAll = async () => {
   return result;
 };
 
-// eslint-disable-next-line max-lines-per-function
 const getByProgress = async (progress: boolean) => {
   const result = await MatchesModel.findAll({
     where: { inProgress: progress },
@@ -37,6 +36,16 @@ const getByProgress = async (progress: boolean) => {
   });
 
   return result;
+};
+
+const finishMatch = async (id: number) => {
+  await MatchesModel.update(
+    { inProgress: false },
+    { where: {
+      id,
+    } },
+  );
+  return 'Finished';
 };
 
 // const result = await MatchesModel.findAll({
@@ -64,4 +73,4 @@ const getByProgress = async (progress: boolean) => {
 //     inProgress: true,
 //   },
 // });
-export default { getAll, getByProgress };
+export default { getAll, getByProgress, finishMatch };

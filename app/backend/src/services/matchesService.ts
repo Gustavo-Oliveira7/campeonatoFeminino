@@ -48,29 +48,14 @@ const finishMatch = async (id: number) => {
   return 'Finished';
 };
 
-// const result = await MatchesModel.findAll({
-//   attributes: [
-//     'id',
-//     'homeTeamId',
-//     'homeTeamGoals',
-//     'awayTeamId',
-//     'awayTeamGoals',
-//     'in_progress',
-//   ],
-//   include: [
-//     {
-//       model: TeamsModel,
-//       as: 'homeTeam',
-//       attributes: ['teamName'],
-//     },
-//     {
-//       model: TeamsModel,
-//       as: 'awayTeam',
-//       attributes: ['teamName'],
-//     },
-//   ],
-//   where: {
-//     inProgress: true,
-//   },
-// });
-export default { getAll, getByProgress, finishMatch };
+const updateMatch = async (id:number, homeTeamGoals:number, awayTeamGoals:number) => {
+  console.log(id, homeTeamGoals, awayTeamGoals);
+  await MatchesModel.update(
+    { homeTeamGoals, awayTeamGoals },
+    { where: {
+      id,
+    } },
+  );
+};
+
+export default { getAll, getByProgress, finishMatch, updateMatch };

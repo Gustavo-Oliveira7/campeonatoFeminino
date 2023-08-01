@@ -37,8 +37,9 @@ const updateMatch = async (req: Request, res: Response) => {
 };
 
 const createMatch = async (req: Request, res: Response) => {
-  const data = req.body;
-  const result = await matchesService.createMatch(data);
+  const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+  const result = await matchesService
+    .createMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
   return res.status(201).json(result);
 };
 

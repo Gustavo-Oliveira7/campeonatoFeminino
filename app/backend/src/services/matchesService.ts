@@ -58,8 +58,12 @@ const updateMatch = async (id:number, homeTeamGoals:number, awayTeamGoals:number
   );
 };
 
-const createMatch = async (data: any) => {
-  const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = data;
+const createMatch = async (
+  homeTeamId: number,
+  awayTeamId: number,
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+) => {
   const create = await MatchesModel.create({
     homeTeamId,
     homeTeamGoals,

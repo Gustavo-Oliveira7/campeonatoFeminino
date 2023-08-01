@@ -16,11 +16,6 @@ const getAll = async (req: Request, res: Response) => {
 
 const finishMatch = async (req: Request, res: Response) => {
   const { id } = req.params;
-  // const { authorization } = req.headers;
-  // if (!authorization) return res.status(401).json({ message: 'Token not found' });
-  // const data = authorization.split(' ');
-  // const token = data[1];
-  // if (!token) return res.status(401).json({ message: validToken });
   try {
     const result = await matchesService.finishMatch(Number(id));
     return res.status(200).json({ message: result });
@@ -32,11 +27,6 @@ const finishMatch = async (req: Request, res: Response) => {
 const updateMatch = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { homeTeamGoals, awayTeamGoals } = req.body;
-  // const { authorization } = req.headers;
-  // if (!authorization) return res.status(401).json({ message: 'Token not found' });
-  // const data = authorization.split(' ');
-  // const token = data[1];
-  // if (!token) return res.status(401).json({ message: validToken });
   try {
     await matchesService
       .updateMatch(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
@@ -46,8 +36,10 @@ const updateMatch = async (req: Request, res: Response) => {
   }
 };
 
-// const createMatch = async (req: Request, res: Response) => {
-//   console.log('lal');
-// };
+const createMatch = async (req: Request, res: Response) => {
+  const data = req.body;
+  const result = await matchesService.createMatch(data);
+  return res.status(201).json(result);
+};
 
-export default { getAll, finishMatch, updateMatch };
+export default { getAll, finishMatch, updateMatch, createMatch };

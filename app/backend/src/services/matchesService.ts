@@ -58,4 +58,15 @@ const updateMatch = async (id:number, homeTeamGoals:number, awayTeamGoals:number
   );
 };
 
-export default { getAll, getByProgress, finishMatch, updateMatch };
+const createMatch = async (data: any) => {
+  const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = data;
+  const create = await MatchesModel.create({
+    homeTeamId,
+    homeTeamGoals,
+    awayTeamId,
+    awayTeamGoals,
+    inProgress: true,
+  });
+  return create.dataValues;
+};
+export default { getAll, getByProgress, finishMatch, updateMatch, createMatch };

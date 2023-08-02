@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-const leaderHome = async (req: Request, res: Response) => {
+const leaderHome = async (_req: Request, _res: Response) => {
   console.log('aaa');
 };
 

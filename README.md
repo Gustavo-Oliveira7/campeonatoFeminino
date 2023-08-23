@@ -9,15 +9,15 @@ O projeto é dividido em três principais componentes: a API backend, o frontend
 O backend é construído usando Node.js e Express.js, e é dockerizado para simplificar o ambiente de desenvolvimento e implantação. Para lidar com o banco de dados, utilizamos o Sequelize como ORM (Object-Relational Mapping). A API oferece endpoints para obter informações sobre os times, partidas, estatísticas e autenticação.
 
 ## Endpoints da API
-GET /leaderboard/home: Retorna a tabela de classificação com suas estatísticas.
-POST /login: Autentica o usuário e gera um token de acesso.
-GET /login/role: Recebe um token gerado no login e se for válido retorna a função do  usuário.
-GET /matches: Retorna a lista de partidas com resultados.
-POST /matches: Cria uma partida.
-PATCH /matches/:id/finish: Finaliza uma partida. Deve ter a permissão necessária.
-PATCH /matches/:id: Atualiza o resultado de uma partida. Deve ter a permissão necessária.
-GET /teams: Retorna todos os times.
-GET /teams/:id: Retorna o time com o id desejado.
+- GET /leaderboard/home: Retorna a tabela de classificação com suas estatísticas.
+- POST /login: Autentica o usuário e gera um token de acesso.
+- GET /login/role: Recebe um token gerado no login e se for válido retorna a função do usuário.
+- GET /matches: Retorna a lista de partidas com resultados.
+- POST /matches: Cria uma partida.
+- PATCH /matches/:id/finish: Finaliza uma partida. Deve ter a permissão necessária.
+- PATCH /matches/:id: Atualiza o resultado de uma partida. Deve ter a permissão necessária.
+- GET /teams: Retorna todos os times.
+- GET /teams/:id: Retorna o time com o id desejado.
 
 ## Frontend
 O frontend é uma aplicação web que consome os dados fornecidos pela API backend. Ele exibe a tabela de classificação, resultados de partidas e fornece uma interface para atualizar os resultados das partidas quando o usuário está autenticado.
